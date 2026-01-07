@@ -1,97 +1,234 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Web</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        nav {
-            background-color: #555;
-            padding: 0.5rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            display: inline-block;
-        }
-        
-        nav a:hover {
-            background-color: #777;
-        }
-        
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roca Bank</title>
+  <style>
+    :root{
+      --bg1:#071a2f;     /* deep navy */
+      --bg2:#031225;     /* darker navy */
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --muted2:rgba(255,255,255,.62);
+
+      --brand:#0bbbd6;   /* teal */
+      --primary:#0b5cff; /* bright blue */
+      --surface:rgba(255,255,255,.10);
+      --border:rgba(255,255,255,.18);
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 40% 20%, rgba(11,188,214,.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Layout container (mobile-first like the screenshot) */
+    .screen{
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      padding-bottom: max(18px, env(safe-area-inset-bottom));
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      height: 52px;
+    }
+
+    .lang{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      color: rgba(255,255,255,.9);
+      font-weight: 600;
+      cursor: pointer;
+      user-select:none;
+      backdrop-filter: blur(8px);
+    }
+    .lang svg{ opacity:.9; }
+    .lang .chev{ opacity:.7; }
+
+    /* Center content */
+    .content{
+      flex: 1;
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 12px 8px 8px;
+    }
+
+    /* “ROCA” logo text approximation */
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 0;
+      margin-bottom: 28px;
+      transform: translateY(-6px);
+    }
+    .logo .r,
+    .logo .o,
+    .logo .c{
+      font-size: 54px;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--brand);
+      text-stroke: 2px var(--brand);
+      line-height: 1;
+      position: relative;
+      opacity: .95;
+    }
+    .logo .a{
+      font-size: 54px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin-left: 1px;
+      text-shadow: 0 10px 30px rgba(11,92,255,.22);
+    }
+
+    /* little “circuit dots” on the left of the R like the mock */
+    .logo .r::before{
+      content:"";
+      position:absolute;
+      left:-24px;
+      top: 6px;
+      width: 14px;
+      height: 38px;
+      border-left: 2px solid rgba(11,188,214,.45);
+      border-top: 2px solid rgba(11,188,214,.45);
+      border-bottom: 2px solid rgba(11,188,214,.45);
+      border-radius: 6px;
+    }
+    .logo .r::after{
+      content:"";
+      position:absolute;
+      left:-32px;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(11,188,214,.85);
+      box-shadow:
+        0 10px 0 rgba(11,188,214,.55),
+        0 20px 0 rgba(11,188,214,.35),
+        14px 4px 0 rgba(11,188,214,.35),
+        14px 26px 0 rgba(11,188,214,.35);
+    }
+
+    h1{
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 750;
+      margin-bottom: 10px;
+    }
+    p{
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 34ch;
+      margin: 0 auto;
+    }
+
+    /* Bottom actions */
+    .actions{
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      padding-top: 18px;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn{
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform .05s ease, filter .15s ease, background .15s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.secondary{
+      background: rgba(255,255,255,.92);
+      color: #0a2c55;
+      border: 1px solid rgba(255,255,255,.45);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .btn.primary{
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 40px rgba(11,92,255,.24);
+    }
+
+    /* Desktop: keep it centered like a phone */
+    @media (min-width: 900px){
+      body{ display:flex; align-items:center; justify-content:center; }
+      .screen{
+        width: 420px;
+        min-height: 780px;
+        border-radius: 26px;
+        border: 1px solid rgba(255,255,255,.10);
+        box-shadow: 0 30px 80px rgba(0,0,0,.45);
+        overflow: hidden;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Bienvenido a Mi Sitio</h1>
-    </header>
-    
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#acerca">Acerca de</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-    
-    <main>
-        <section id="inicio">
-            <h2>Inicio</h2>
-            <p>Este es el contenido principal de tu sitio web.</p>
-        </section>
-        
-        <section id="acerca">
-            <h2>Acerca de</h2>
-            <p>Información sobre ti o tu proyecto.</p>
-        </section>
-        
-        <section id="servicios">
-            <h2>Servicios</h2>
-            <p>Describe los servicios que ofreces.</p>
-        </section>
-        
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <p>Información de contacto aquí.</p>
-        </section>
+  <div class="screen">
+    <div class="topbar">
+      <button class="lang" type="button" aria-label="Language">
+        <!-- globe icon -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M2 12h20" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          <path d="M12 2c2.8 2.7 4.4 6.2 4.4 10S14.8 19.3 12 22c-2.8-2.7-4.4-6.2-4.4-10S9.2 4.7 12 2Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+        </svg>
+        EN
+        <!-- chevron -->
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <main class="content">
+      <div class="logo" aria-label="ROCA">
+        <span class="r">R</span><span class="o">O</span><span class="c">C</span><span class="a">A</span>
+      </div>
+
+      <h1>Welcome to Roca Bank</h1>
+      <p>Enjoy secure, fast, and easy banking at your fingertips.</p>
     </main>
-    
-    <footer>
-        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
-    </footer>
+
+    <section class="actions" aria-label="Actions">
+      <button class="btn secondary" type="button">Open an Account</button>
+      <button class="btn primary" type="button">I'm Already a Customer</button>
+    </section>
+  </div>
 </body>
 </html>

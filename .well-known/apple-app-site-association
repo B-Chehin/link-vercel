@@ -5,7 +5,9 @@
       {
         "appID": "ZTBH29ZRG3.net.veritran.rbus.p2.s.vtdev",
         "paths": [
+          "/kyb",
           "/kyb/*",
+          "/kwb",
           "/kwb/*"
         ]
       }

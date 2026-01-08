@@ -32,12 +32,6 @@
       padding: 16px;
     }
 
-    .topbar{
-      display:flex;
-      justify-content:flex-end;
-      height: 52px;
-    }
-
     .content{
       flex: 1;
       display:flex;
@@ -107,11 +101,6 @@
       box-shadow: 0 16px 40px rgba(11,92,255,.25);
     }
 
-    .btn.secondary{
-      background: rgba(255,255,255,.9);
-      color: #0a2c55;
-    }
-
     @media (min-width: 900px){
       body{ display:flex; align-items:center; justify-content:center; }
       .screen{
@@ -140,16 +129,24 @@
     </main>
 
     <section class="actions">
-      <button class="btn primary" onclick=volver()>Return to App</button>
+      <button class="btn primary" onclick="volver()">Return to App</button>
     </section>
+
+    <!-- Link real oculto -->
+    <a 
+      id="openAppLink"
+      href="https://link-vercel-topaz.vercel.app/test?status=success&from=link"
+      style="display:none"
+    ></a>
 
   </div>
 
   <script>
-  function volver() {
-        window.location.href = "https://link-vercel-topaz.vercel.app/test?status=success&from=link";
-        }
-    </script>
+    function volver() {
+      // Simula un click real del usuario
+      document.getElementById("openAppLink").click();
+    }
+  </script>
 
 </body>
 </html>

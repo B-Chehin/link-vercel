@@ -119,6 +119,7 @@
     <main class="content">
       <div class="logo">
         <span class="r">R</span><span class="o">O</span><span class="c">C</span><span class="a">A</span>
+        
       </div>
 
       <h1>You’ve completed your KWB 🎉</h1>
@@ -126,6 +127,7 @@
         Your verification is complete.  
         Return to the app to finish your registration and start using your account.
       </p>
+      
     </main>
 
     <section class="actions">
@@ -133,19 +135,15 @@
     </section>
 
     <!-- Link real oculto -->
-    <a 
-      id="openAppLink"
-      href="https://link-vercel-topaz.vercel.app/test?status=success&from=link"
-    ></a>
+    
 
   </div>
 
   <script>
-    function volver() {
-      // Simula un click real del usuario
-      document.getElementById("openAppLink").click();
-    }
-  </script>
+  function volver() {
+    window.location.href = "https://link-vercel-topaz.vercel.app/test?status=success&from=link";
+  }
+</script>
 
 </body>
 </html>

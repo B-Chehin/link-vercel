@@ -10,7 +10,11 @@
           "/kwb",
           "/kwb/*",
           "/kwb*",
-          "/kyb*"
+          "/kyb*",
+          "/test*",
+          "/test/*",
+          "/kwbNot*",
+          "/kwbNot/*"
         ]
       }
     ]

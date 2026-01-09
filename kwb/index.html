@@ -22,7 +22,7 @@
       <p><code>https://link-vercel-topaz.vercel.app/kwb?status=success&from=link</code></p>
 
       <p class="muted">Deep link que vamos a abrir:</p>
-      <p><a id="dl" href="rbus://kwb?status=success&from=link">rbus://kwb?status=success&from=link</a></p>
+      <p><a id="dl" href="https://link-vercel-topaz.vercel.app/kwb?status=success&from=link">rbus://kwb?status=success&from=link</a></p>
 
       <button id="btn">Volver a la app</button>
 
@@ -30,7 +30,7 @@
     </div>
 
     <script>
-      const deepLink = "rbus://kwb?status=success&from=link";
+      const deepLink = "https://link-vercel-topaz.vercel.app/kwb?status=success&from=link";
 
       function openApp() {
         document.getElementById("status").textContent = "Intentando abrir: " + deepLink;

@@ -1,46 +1,155 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Test KWB</title>
-    <style>
-      body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; padding: 22px; }
-      .card { max-width: 560px; margin: 0 auto; border: 1px solid #ddd; border-radius: 14px; padding: 16px; }
-      button { width: 100%; padding: 12px 14px; font-size: 16px; border-radius: 10px; }
-      a { word-break: break-all; }
-      .muted { opacity: .75; font-size: 13px; }
-      code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
-    </style>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roca Bank</title>
+  <style>
+    :root{
+      --bg1:#071a2f;
+      --bg2:#031225;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
 
-  <body>
-    <div class="card">
-      <h3>Return to app (test)</h3>
+      --brand:#0bbbd6;
+      --primary:#0b5cff;
+    }
 
-      <p class="muted">URL web (quemada):</p>
-      <p><code>https://link-vercel-topaz.vercel.app/kwb?status=success&from=link</code></p>
+    *{ box-sizing:border-box; margin:0; padding:0; }
 
-      <p class="muted">Deep link que vamos a abrir:</p>
-      <p><a id="dl" href="https://link-vercel-topaz.vercel.app/kwb?status=success&from=link">rbus://kwb?status=success&from=link</a></p>
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 40% 20%, rgba(11,188,214,.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-      <button id="btn">Volver a la app</button>
+    .screen{
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
 
-      <p class="muted" id="status" style="margin-top: 12px;"></p>
-    </div>
+    .topbar{
+      display:flex;
+      justify-content:flex-end;
+      height: 52px;
+    }
 
-    <script>
-      const deepLink = "https://link-vercel-topaz.vercel.app/kwb?status=success&from=link";
+    .content{
+      flex: 1;
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 12px 8px;
+    }
 
-      function openApp() {
-        document.getElementById("status").textContent = "Intentando abrir: " + deepLink;
-        window.location.href = deepLink;
+    .logo{
+      display:flex;
+      margin-bottom: 28px;
+    }
+
+    .logo span{
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo .r,
+    .logo .o,
+    .logo .c{
+      color: transparent;
+      -webkit-text-stroke: 2px var(--brand);
+    }
+
+    .logo .a{
+      color: var(--primary);
+    }
+
+    h1{
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p{
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 36ch;
+    }
+
+    .actions{
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn{
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 15px 16px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .btn.primary{
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 40px rgba(11,92,255,.25);
+    }
+
+    .btn.secondary{
+      background: rgba(255,255,255,.9);
+      color: #0a2c55;
+    }
+
+    @media (min-width: 900px){
+      body{ display:flex; align-items:center; justify-content:center; }
+      .screen{
+        width: 420px;
+        min-height: 780px;
+        border-radius: 26px;
+        box-shadow: 0 30px 80px rgba(0,0,0,.45);
       }
+    }
+  </style>
+</head>
 
+<body>
+  <div class="screen">
 
-      // intento con gesto de usuario (más confiable)
-      document.getElementById("btn").addEventListener("click", openApp);
+    <main class="content">
+      <div class="logo">
+        <span class="r">R</span><span class="o">O</span><span class="c">C</span><span class="a">A</span>
+      </div>
+
+      <h1>You’ve completed your KWB 🎉</h1>
+      <p>
+        Your verification is complete.  
+        Return to the app to finish your registration and start using your account.
+      </p>
+    </main>
+
+    <section class="actions">
+      <button class="btn primary" onclick=volver()>Return to App</button>
+    </section>
+
+  </div>
+
+  <script>
+  function volver() {
+        window.location.href = "rocabank://path?arg1=bauti&arg2=juli"
+        }
     </script>
-  </body>
-</html>
 
+</body>
+</html>

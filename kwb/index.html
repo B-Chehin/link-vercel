@@ -37,8 +37,6 @@
         window.location.href = deepLink;
       }
 
-      // intento automático (puede ser bloqueado en WebView iOS si no hay gesto)
-      setTimeout(openApp, 80);
 
       // intento con gesto de usuario (más confiable)
       document.getElementById("btn").addEventListener("click", openApp);

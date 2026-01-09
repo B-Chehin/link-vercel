@@ -12,7 +12,8 @@
           "/kwb*",
           "/kyb*",
           "/kwbNot*",
-          "/kwbNot/*"
+          "/kwbNot/*",
+          "/kwbNot"
         ]
       }
     ]

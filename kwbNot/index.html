@@ -32,12 +32,6 @@
       padding: 16px;
     }
 
-    .topbar{
-      display:flex;
-      justify-content:flex-end;
-      height: 52px;
-    }
-
     .content{
       flex: 1;
       display:flex;
@@ -107,11 +101,6 @@
       box-shadow: 0 16px 40px rgba(11,92,255,.25);
     }
 
-    .btn.secondary{
-      background: rgba(255,255,255,.9);
-      color: #0a2c55;
-    }
-
     @media (min-width: 900px){
       body{ display:flex; align-items:center; justify-content:center; }
       .screen{
@@ -132,24 +121,24 @@
         <span class="r">R</span><span class="o">O</span><span class="c">C</span><span class="a">A</span>
       </div>
 
-      <h1>You’ve completed your KWB 🎉</h1>
+      <h1>Something went wrong 😕</h1>
       <p>
-        Your verification is complete.  
-        Return to the app to finish your registration and start using your account.
+        We couldn't complete your verification because the form submission failed.  
+        Please return to the app and try again.
       </p>
     </main>
 
     <section class="actions">
-      <button class="btn primary" onclick=volver()>Return to App</button>
+      <button class="btn primary" onclick="volver()">Continue</button>
     </section>
 
   </div>
 
   <script>
-  function volver() {
-        window.location.href = "https://link-vercel-topaz.vercel.app/test?status=error&from=link";
-        }
-    </script>
+    function volver() {
+      window.location.href = "https://link-vercel-topaz.vercel.app/test?status=error&from=link";
+    }
+  </script>
 
 </body>
 </html>

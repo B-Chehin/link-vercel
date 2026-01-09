@@ -11,9 +11,6 @@
           "/kwb/*",
           "/kwb*",
           "/kyb*",
-          "/test",
-          "/test*",
-          "/test/*",
           "/kwbNot*",
           "/kwbNot/*"
         ]

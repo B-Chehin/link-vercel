@@ -8,5 +8,27 @@
         "F3:9E:42:74:64:7C:F9:8F:EB:63:27:11:E1:5A:6C:3D:C2:F3:2C:78:F5:9E:80:A7:D5:AD:67:D8:76:EE:54:77"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.veritran.rbus.p2.s.qa",
+      "sha256_cert_fingerprints": [
+        "F3:9E:42:74:64:7C:F9:8F:EB:63:27:11:E1:5A:6C:3D:C2:F3:2C:78:F5:9E:80:A7:D5:AD:67:D8:76:EE:54:77"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.veritran.rbus.p2.s.vtqa",
+      "sha256_cert_fingerprints": [
+        "F3:9E:42:74:64:7C:F9:8F:EB:63:27:11:E1:5A:6C:3D:C2:F3:2C:78:F5:9E:80:A7:D5:AD:67:D8:76:EE:54:77"
+      ]
+    }
   }
+
+
 ]

@@ -15,6 +15,34 @@
           "/kwbNot/*",
           "/kwbNot"
         ]
+      },
+      {
+        "appID": "ZTBH29ZRG3.net.veritran.rbus.p2.s.qa",
+        "paths": [
+          "/kyb",
+          "/kyb/*",
+          "/kwb",
+          "/kwb/*",
+          "/kwb*",
+          "/kyb*",
+          "/kwbNot*",
+          "/kwbNot/*",
+          "/kwbNot"
+        ]
+      },
+      {
+        "appID": "ZTBH29ZRG3.net.veritran.rbus.p2.s.vtqa",
+        "paths": [
+          "/kyb",
+          "/kyb/*",
+          "/kwb",
+          "/kwb/*",
+          "/kwb*",
+          "/kyb*",
+          "/kwbNot*",
+          "/kwbNot/*",
+          "/kwbNot"
+        ]
       }
     ]
   }

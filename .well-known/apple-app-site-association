@@ -13,7 +13,10 @@
           "/kyb*",
           "/kwbNot*",
           "/kwbNot/*",
-          "/kwbNot"
+          "/kwbNot",
+          "/joint*",
+          "/joint/*",
+          "/joint"
         ]
       },
       {
@@ -27,7 +30,10 @@
           "/kyb*",
           "/kwbNot*",
           "/kwbNot/*",
-          "/kwbNot"
+          "/kwbNot",
+          "/joint*",
+          "/joint/*",
+          "/joint"
         ]
       },
       {
@@ -41,7 +47,10 @@
           "/kyb*",
           "/kwbNot*",
           "/kwbNot/*",
-          "/kwbNot"
+          "/kwbNot",
+          "/joint*",
+          "/joint/*",
+          "/joint"
         ]
       }
     ]

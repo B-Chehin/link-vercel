@@ -31,12 +31,6 @@
       padding: 16px;
     }
 
-    .topbar{
-      display:flex;
-      justify-content:flex-end;
-      height: 52px;
-    }
-
     .content{
       flex: 1;
       display:flex;
@@ -65,14 +59,9 @@
       -webkit-text-stroke: 2px var(--brand);
     }
 
-    .logo .a{
-      color: var(--primary);
-    }
+    .logo .a{ color: var(--primary); }
 
-    h1{
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
+    h1{ font-size: 26px; margin-bottom: 10px; }
 
     p{
       font-size: 15px;
@@ -86,6 +75,22 @@
       font-size: 13px;
       color: var(--brand);
     }
+
+    /* Fallback oculto por defecto */
+    .fallback{
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .fallback p{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .fallback.visible{ display: flex; }
 
     .actions{
       width: 100%;
@@ -137,33 +142,68 @@
         <span class="r">R</span><span class="o">O</span><span class="c">C</span><span class="a">A</span>
       </div>
 
-      <h1>Bienvenido a Mi Sitio</h1>
-      <p>Este es el contenido principal de tu sitio web. Serás redirigido automáticamente en unos segundos.</p>
-      <p class="countdown" id="countdown">Redirigiendo en 5 segundos...</p>
+      <h1>You've completed your KYB 🎉</h1>
+      <p>Your verification is complete. You'll be redirected back to the app automatically.</p>
+      <p class="countdown" id="countdown">Redirecting in 5 seconds...</p>
+
+      <!-- Se muestra solo si el deep link falla -->
+      <div class="fallback" id="fallback">
+        <p>It looks like the Roca Bank app isn't installed on your device.</p>
+        <button class="btn secondary" onclick="goToStore()">Download the app</button>
+      </div>
     </main>
 
     <section class="actions">
-      <button class="btn primary" onclick="irAKyb()">Ir ahora</button>
+      <button class="btn primary" id="openBtn" onclick="openDeepLink()">Open in app</button>
     </section>
 
   </div>
 
   <script>
-    let seconds = 5;
+    const DEEP_LINK  = "rocabank://path/kyb";
+    const STORE_URL  = "#"; // reemplazar con la URL de la tienda
+
+    let seconds     = 5;
+    let redirected  = false;
     const countdownEl = document.getElementById("countdown");
+    const fallbackEl  = document.getElementById("fallback");
+    const openBtn     = document.getElementById("openBtn");
 
     const interval = setInterval(function() {
       seconds--;
-      countdownEl.textContent = "Redirigiendo en " + seconds + " segundo" + (seconds !== 1 ? "s" : "") + "...";
+      countdownEl.textContent = "Redirecting in " + seconds + " second" + (seconds !== 1 ? "s" : "") + "...";
       if (seconds <= 0) {
         clearInterval(interval);
-        irAKyb();
+        openDeepLink();
       }
     }, 1000);
 
-    function irAKyb() {
+    function openDeepLink() {
       clearInterval(interval);
-      window.location.href = "https://link-vercel-topaz.vercel.app/kyb";
+      countdownEl.style.display = "none";
+      openBtn.style.display     = "none";
+      redirected = false;
+
+      // Intentamos abrir el deep link
+      window.location.href = DEEP_LINK;
+
+      // Si después de 2 segundos seguimos en la página, el deep link falló
+      setTimeout(function() {
+        if (!redirected) {
+          fallbackEl.classList.add("visible");
+        }
+      }, 2000);
+
+      // Si la página se oculta (app abierta), marcamos como exitoso
+      document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+          redirected = true;
+        }
+      });
+    }
+
+    function goToStore() {
+      window.location.href = STORE_URL;
     }
   </script>
 
